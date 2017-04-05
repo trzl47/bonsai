@@ -2,7 +2,7 @@
 import { render } from 'react-dom';
 
 // CSS
-import './boltnetwork.css';
+import './bonsai.css';
 // Routes
 import routes from './router';
 

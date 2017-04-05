@@ -3,9 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
-import Home from './containers/Home.js';
-import Footer from './components/Footer.js';
-import NotFound from './components/NotFound';
+import Home from './Home.js';
+import NotFound from './NotFound';
 
 // Routes
 const routes = (
@@ -15,7 +14,6 @@ const routes = (
 				<Route exact={true} pattern="/" component={Home} />
 				<Route path="*" component={NotFound} />
 			</Switch>
-			<Footer />
 		</div>
   </Router>
 );
