@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import RedirectWithStatus from './redirect-w-status.js';
+import RedirectWithStatus from './redirect-w-status.jsx';
 // components
 // routes
 import router from '../routes/router';

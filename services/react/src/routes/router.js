@@ -1,6 +1,6 @@
 // Components
-import NotFound from '../app/NotFound.js';
-import HomePage from '../app/HomePage.js';
+import NotFound from '../app/NotFound.jsx';
+import HomePage from '../app/HomePage.jsx';
 
 export default {
 	routes: [
