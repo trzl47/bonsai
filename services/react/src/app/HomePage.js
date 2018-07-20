@@ -1,32 +1,14 @@
 // Libs
-import React, { Component } from 'react';
+import React from 'react';
 // Components
 
-export default class Home extends Component {
-	// var main = function() {
-	// 	$('#image-url').keyup(function() {
-	// 		var url = $(this).val();
-	// 	$('.thumbnail img').attr('src', url);
-	// 	});
-	//
-	// 	$('#top-text').keyup(function() {
-	// 		var top = $(this).val();
-	// 		$('.top-caption').text(top);
-	// 	});
-	//
-	// 	$('#bottom-text').keyup(function() {
-	// 		var bottom = $(this).val();
-	// 		$('.bottom-caption').text(bottom);
-	// 	});
-	// };
-	//
-	// $(document).ready(main);
-	render() {
-		return(
-			<div className='bonsai'>
+// Routes
+const HomePage = () => {
+	return (
+				<div className='bonsai'>
 				<div className='header'>
 					<div className="container">
-						<img alt='' role='presentation' src={require('./assets/logo.svg')} />
+						<img alt='' role='presentation' src={require('../img/logo.svg')} />
 						<h1>Bonsai</h1>
 					</div>
 				</div>
@@ -35,7 +17,7 @@ export default class Home extends Component {
 						<div className="row">
 							<div className="col-md-6">
 								<div className={["meme","thumbnail"].join(' ')}>
-									<img alt='' role='presentation' src={require('./assets/cat.jpg')} />
+									<img alt='' role='presentation' src={require('../img/cat.jpg')} />
 									<h1 className='top-caption'>U say something?</h1>
 									<h1 className='bottom-caption'>I'm all ears</h1>
 								</div>
@@ -63,6 +45,7 @@ export default class Home extends Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
-}
+	);
+};
+
+export default HomePage;

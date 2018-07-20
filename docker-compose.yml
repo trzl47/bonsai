@@ -1,0 +1,58 @@
+version: '3.5'
+services:
+  react:
+    build:
+      context: ./services/react/
+      dockerfile: Dockerfile
+    image: bonsai-react
+    container_name: react
+    restart: unless-stopped
+    volumes:
+    #      - ./services/react:/usr/src/app
+      - ./services/react:/app:z  # z needed for selinux
+      - /app/node_modules
+      - /build/client-dev
+      - /build/server-dev
+    env_file: .env
+    # depends_on:
+    #   - apollo
+  react-nginx:
+    build:
+      context: ./services/react-nginx/
+      dockerfile: Dockerfile
+    image: bonsai-nginx
+    container_name: bonsai-nginx
+    restart: always
+    volumes:
+      - ./services/react/build/client-dev/:/client
+      - ./services/react/build/server-dev/:/server
+    env_file: .env
+    depends_on:
+      - react
+  # backend:
+  #   build:
+  #     context: ./services/backend/
+  #     dockerfile: Dockerfile
+  #   image: backend-service
+  #   container_name: backend-service
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./services/backend/:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   env_file: .env
+  #   # depends_on:
+  #     # - db
+  #     # - service
+  reverseproxy:
+    build:
+      context: ./services/reverseproxy/
+      dockerfile: Dockerfile
+    image: bonsai-proxy
+    container_name: bonsai-proxy
+    restart: always
+    ports:
+      - 80:80 # react app
+    depends_on:
+      - react
+      - react-nginx
+    #   - backend

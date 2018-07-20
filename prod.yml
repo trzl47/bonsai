@@ -1,0 +1,43 @@
+version: '3'
+services:
+  react-nginx:
+    image: trzl/portfolio:augment-react.1
+    restart: unless-stopped
+    container_name: augment-nginx
+    networks:
+      - augment
+    env_file: .env
+    environment:
+      - NODE_ENV=production
+  # apollo:
+  #   image: trzl/portfolio:augment-apollo.1
+  #   container_name: augment-apollo
+  #   restart: unless-stopped
+  #   env_file: .env
+    # depends_on:
+      # - db
+      # - service
+  #   networks:
+  #     - augment
+  reverseproxy:
+    image: trzl/portfolio:augment-proxy.1
+    container_name: augment-proxy
+    restart: unless-stopped
+    expose:
+      - "80"
+      - "443"
+    depends_on:
+      - react-nginx
+    #   - apollo
+    # networks:
+    #   - augment
+    environment:
+      VIRTUAL_HOST: tbrownkcdev.com
+      LETSENCRYPT_HOST: tbrownkcdev.com
+      LETSENCRYPT_EMAIL: brownty47@gmail.com
+networks:
+  default:
+    external:
+      name: webproxy
+  # augment:
+    # driver: bridge
