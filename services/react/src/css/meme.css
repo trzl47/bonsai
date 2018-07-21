@@ -1,5 +1,9 @@
 .meme {
 	position: relative;
+	width: 100%;
+}
+.meme img {
+	width: 100%;
 }
 
 .top-caption,

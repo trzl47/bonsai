@@ -54,7 +54,7 @@ export class StateProvider extends React.Component {
 		};
 
 		this.state = {
-			searchField: '',
+			searchField: require('../../img/cat.jpg'),
 			topField: 'you say sum\'n?',
 			botField: 'I\'m all ears',
 			loading: false,

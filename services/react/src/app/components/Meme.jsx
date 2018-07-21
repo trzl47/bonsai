@@ -11,8 +11,8 @@ class Meme extends React.Component {
 
 	render() {
 		return (
-			<section className='meme thumbnail'>
-				<img alt='searchField image' role='presentation' src={require('../../img/cat.jpg')} />
+			<section className='meme'>
+				<img alt='image' role='presentation' src={this.props.searchField} />
 				<h1 className='top-caption'> {this.props.topField} </h1>
 				<h1 className='bottom-caption'> {this.props.botField} </h1>
 			</section>
