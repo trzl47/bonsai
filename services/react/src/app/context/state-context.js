@@ -1,6 +1,5 @@
 // Libs
 import React from 'react';
-// import axios from 'axios';
 
 export const StateContext = React.createContext();
 
@@ -26,39 +25,10 @@ export class StateProvider extends React.Component {
 			this.setState({ botField: e.target.value });
 		};
 
-		this.handleSubmit = (e) => {
-			e.preventDefault();
-
-			this.setState({ loading: true });
-
-			// axios.get(`${PRTCL}://${HOST}/weather`, {...this.state})
-			// .then((response) => {
-			// 	this.setState({
-			// 		data: response.data,
-			// 	});
-			// })
-			// .catch(error => {
-			// 	this.setState({
-			// 		data: { message: 'Error fetching data', error: error },
-			// 	});
-			// })
-			// .then(() => {
-			// 	this.setState({
-			// 		loading: false
-			// 	});
-			// });
-		};
-
-		this.getImage = (id) => {
-			return `${PRTCL}://openweathermap.org/img/w/${id}.png`;
-		};
-
 		this.state = {
 			searchField: require('../../img/cat.jpg'),
 			topField: 'you say sum\'n?',
 			botField: 'I\'m all ears',
-			loading: false,
-			data: {}
 		};
 	}
 
@@ -70,8 +40,6 @@ export class StateProvider extends React.Component {
 				updateSearch: this.updateSearch,
 				updateTop: this.updateTop,
 				updateBot: this.updateBot,
-				handleSubmit: this.handleSubmit,
-				getImage: this.getImage,
 			}}>
 				{ this.props.children }
 			</StateContext.Provider>

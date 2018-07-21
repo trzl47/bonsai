@@ -19,15 +19,13 @@ const Header = () => {
 				({
 					searchField,updateSearch,
 					topField,updateTop,
-					botField,updateBot,
-					loading, handleSubmit,
+					botField,updateBot
 				}) => {
 					return (
 						<Tool
 						searchField={searchField} updateSearch={updateSearch}
 						topField={topField} updateTop={updateTop}
-						botField={botField} updateBot={updateBot}
-						loading={loading} handleSubmit={handleSubmit} />
+						botField={botField} updateBot={updateBot} />
 					);
 				}
 			}
