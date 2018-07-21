@@ -1,0 +1,30 @@
+version: '3'
+services:
+  react-nginx:
+    image: trzl/portfolio:bonsai-react.1
+    restart: unless-stopped
+    container_name: bonsai-nginx
+    networks:
+      - bonsai
+    env_file: .env
+    environment:
+      - NODE_ENV=production
+  reverseproxy:
+    image: trzl/portfolio:bonsai-proxy.1
+    container_name: bonsai-proxy
+    restart: unless-stopped
+    expose:
+      - "80"
+      - "443"
+    depends_on:
+      - react-nginx
+    environment:
+      VIRTUAL_HOST: bonsai.tbrownkcdev.com
+      LETSENCRYPT_HOST: .bonsai.tbrownkcdev.com
+      LETSENCRYPT_EMAIL: brownty47@gmail.com
+networks:
+  default:
+    external:
+      name: webproxy
+  bonsai:
+    driver: bridge

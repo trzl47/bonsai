@@ -1,0 +1,6 @@
+.bonsai {
+	display: grid;
+	grid-template-areas:
+		'header'
+		'meme';
+}

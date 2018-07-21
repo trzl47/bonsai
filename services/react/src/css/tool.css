@@ -1,0 +1,24 @@
+.tool {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.textfield {
+	border-radius: 0;
+	border: 0;
+	border-bottom: 5px solid #3b3bff;
+	box-shadow: none;
+}
+.textfield[type="text"]:focus {
+	border-bottom: 5px solid #ff7171;
+	box-shadow: none;
+}
