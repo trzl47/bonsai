@@ -12,39 +12,21 @@ services:
       - ./services/react:/app:z  # z needed for selinux
       - /app/node_modules
       - /build/client
-      - /build/server
     env_file: .env
     environment:
       - NODE_ENV=production
-    # depends_on:
-    #   - backend
   react-nginx:
     build:
       context: ./services/react-nginx/
-      dockerfile: build.Dockerfile
+      dockerfile: Dockerfile
     image: bonsai-nginx
     container_name: bonsai-nginx
     restart: always
     volumes:
       - ./services/react/build/client/:/client
-      - ./services/react/build/server/:/server
     env_file: .env
     depends_on:
       - react
-  # backend:
-  #   build:
-  #     context: ./services/backend/
-  #     dockerfile: Dockerfile
-  #   image: bonsai-backend
-  #   container_name: bonsai-backend
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./services/backend/:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   env_file: .env
-  #   # depends_on:
-  #     # - db
-  #     # - service
   reverseproxy:
     build:
       context: ./services/reverseproxy/
@@ -57,4 +39,3 @@ services:
     depends_on:
       - react
       - react-nginx
-    #   - backend

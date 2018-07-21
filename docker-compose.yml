@@ -12,10 +12,7 @@ services:
       - ./services/react:/app:z  # z needed for selinux
       - /app/node_modules
       - /build/client-dev
-      - /build/server-dev
     env_file: .env
-    # depends_on:
-    #   - apollo
   react-nginx:
     build:
       context: ./services/react-nginx/
@@ -25,24 +22,9 @@ services:
     restart: always
     volumes:
       - ./services/react/build/client-dev/:/client
-      - ./services/react/build/server-dev/:/server
     env_file: .env
     depends_on:
       - react
-  # backend:
-  #   build:
-  #     context: ./services/backend/
-  #     dockerfile: Dockerfile
-  #   image: backend-service
-  #   container_name: backend-service
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./services/backend/:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   env_file: .env
-  #   # depends_on:
-  #     # - db
-  #     # - service
   reverseproxy:
     build:
       context: ./services/reverseproxy/
@@ -55,4 +37,3 @@ services:
     depends_on:
       - react
       - react-nginx
-    #   - backend
